@@ -56,6 +56,22 @@
 
   "archipelago.check.requires_check": "Requires \"%s\"",
 
+  "archipelago.compat.create.crafting.requires_check": "Could not craft _%1$s_ because it requires _%2$s_.",
+  "archipelago.compat.create.crafting.requires_check.progressive": "Could not craft _%1$s_ because it requires _%2$s (x%3$d)_.",
+
+  "archipelago.compat.create.crafting.some_missing.heading": "Some outputs are missing their requirements",
+  "archipelago.compat.create.crafting.some_missing.description": "Some of the outputs of this recipe have _not been unlocked yet_. (_%1$d/%2$d_)",
+  "archipelago.compat.create.crafting.some_missing.item.locked": "%1$s - Locked",
+  "archipelago.compat.create.crafting.some_missing.item.unlocked": "%1$s - Unlocked",
+  "archipelago.compat.create.crafting.some_missing.requirement": "Requires %1$s",
+  "archipelago.compat.create.crafting.some_missing.requirement.progressive": "Requires %1$s (x%2$d)",
+
+  "archipelago.compat.create.breaking.requires_check": "Could not break _%1$s_ because it requires _%2$s_.",
+  "archipelago.compat.create.breaking.requires_check.progressive": "Could not break _%1$s_ because it requires _%2$s (x%3$d)_.",
+
+  "archipelago.compat.create.item_transport.requires_check": "Could not move items to/from _%1$s_ because it requires _%2$s_.",
+  "archipelago.compat.create.item_transport.requires_check.progressive": "Could not move items to/from _%1$s_ because it requires _%2$s (x%3$d)_.",
+
   "advancements.legacy.root.title": "Legacy and Bedrock",
   "advancements.legacy.root.description": "Root Advancement for Archipelago Advancements based off 1.12 Achievements and Bedrock Achievements",
 

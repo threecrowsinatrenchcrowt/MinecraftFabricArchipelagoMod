@@ -13,7 +13,7 @@ public class BlockMixin {
     @WrapMethod(method = "getBlastResistance")
     private float archipelago$getBlastResistance(Operation<Float> original) {
         Block block = (Block) (Object) this;
-        if (block.getDefaultState().isIn(APTags.ARCHIPELAGO_LOCK_BREAKING) && !APItemAccessUtil.allowCraftOrUse(null, block.asItem())) {
+        if (APItemAccessUtil.disallowBreakingBlock(null, block)) {
             return 3600000;
         }
         return original.call();

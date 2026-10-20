@@ -1,10 +1,7 @@
 package net.deadlydiamond98.archipelago.networking;
 
 import net.deadlydiamond98.archipelago.networking.c2s.RequestTrackerInformationC2SPacket;
-import net.deadlydiamond98.archipelago.networking.s2c.LiteratureTrapS2CPacket;
-import net.deadlydiamond98.archipelago.networking.s2c.SendArchipelagoInfoS2CPacket;
-import net.deadlydiamond98.archipelago.networking.s2c.SendUncheckedItemsS2CPacket;
-import net.deadlydiamond98.archipelago.networking.s2c.UpdatePlayerAbilitiesS2CPacket;
+import net.deadlydiamond98.archipelago.networking.s2c.*;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
@@ -20,6 +17,7 @@ public class APNetworking {
             ClientPlayNetworking.registerGlobalReceiver(UpdatePlayerAbilitiesS2CPacket.ID, UpdatePlayerAbilitiesS2CPacket.Handler::receive);
             ClientPlayNetworking.registerGlobalReceiver(LiteratureTrapS2CPacket.ID, LiteratureTrapS2CPacket.Handler::receive);
             ClientPlayNetworking.registerGlobalReceiver(SendUncheckedItemsS2CPacket.ID, SendUncheckedItemsS2CPacket.Handler::receive);
+            ClientPlayNetworking.registerGlobalReceiver(MissingAPItemForCreateS2CPacket.ID, MissingAPItemForCreateS2CPacket.Handler::receive);
         }
     }
 }

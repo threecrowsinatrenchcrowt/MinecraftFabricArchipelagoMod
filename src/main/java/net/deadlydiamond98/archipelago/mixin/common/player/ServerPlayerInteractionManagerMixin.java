@@ -29,7 +29,7 @@ public class ServerPlayerInteractionManagerMixin {
     // BLOCK INTERACTIONS
     @WrapOperation(method = "interactBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;onUse(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;Lnet/minecraft/util/hit/BlockHitResult;)Lnet/minecraft/util/ActionResult;"))
     private ActionResult archipelago$interactBlock(BlockState instance, World world, PlayerEntity player, Hand hand, BlockHitResult blockHitResult, Operation<ActionResult> original) {
-        if (instance.isIn(APTags.ARCHIPELAGO_LOCK_INTERACTION) && !APItemAccessUtil.allowCraftOrUse(player, instance.getBlock().asItem())) {
+        if (APItemAccessUtil.disallowUsingBlock(player, instance)) {
             return ActionResult.SUCCESS;
         }
         return original.call(instance, world, player, hand, blockHitResult);
@@ -39,7 +39,7 @@ public class ServerPlayerInteractionManagerMixin {
     @WrapOperation(method = "finishMining", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayerInteractionManager;tryBreakBlock(Lnet/minecraft/util/math/BlockPos;)Z"))
     private boolean archipelago$finishMining(ServerPlayerInteractionManager instance, BlockPos pos, Operation<Boolean> original) {
         BlockState state = this.world.getBlockState(pos);
-        if (state.isIn(APTags.ARCHIPELAGO_LOCK_BREAKING) && !APItemAccessUtil.allowCraftOrUse(this.player, state.getBlock().asItem())) {
+        if (APItemAccessUtil.disallowBreakingBlock(this.player, state)) {
             return false;
         }
         return original.call(instance, pos);

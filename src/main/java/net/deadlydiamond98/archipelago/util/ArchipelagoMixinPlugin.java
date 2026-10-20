@@ -20,6 +20,32 @@ public class ArchipelagoMixinPlugin implements IMixinConfigPlugin {
         CONDITIONS.put("net.deadlydiamond98.archipelago.mixin.compat.jei.ItemStackRendererMixin", () -> APMod.isModLoaded("jei"));
         CONDITIONS.put("net.deadlydiamond98.archipelago.mixin.compat.jei.ItemStackBatchRendererMixin", () -> APMod.isModLoaded("jei"));
         CONDITIONS.put("net.deadlydiamond98.archipelago.mixin.compat.rei.ItemEntryDefinitionMixin", () -> APMod.isModLoaded("roughlyenoughitems"));
+        String[] createMixins = {
+                "net.deadlydiamond98.archipelago.mixin.compat.create.BlueprintEntityMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.BasinOperatingBlockEntityMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.KineticBlockEntityMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.MechanicalPressBlockEntityMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.BlockBreakingKineticBlockEntityMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.BlockBreakingMovementBehaviorMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.MountedItemStorageMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.ContraptionMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.MillstoneBlockEntityMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.DeployerBlockEntityMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.MechanicalMixerBlockEntityMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.SawBlockEntityMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.MechanicalCrafterBlockEntityMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.CrushingWheelControllerBlockEntityMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.ChuteBlockEntityMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.FunnelBlockEntityMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.AbstractFunnelBlockMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.PackagerBlockEntityMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.AddDisplayableRequirementMixin",
+                "net.deadlydiamond98.archipelago.mixin.compat.create.BeltFunnelInteractionHandlerMixin",
+        };
+        Supplier<Boolean> createLoadedSupplier = () -> APMod.isModLoaded("create");
+        for (String createMixin : createMixins) {
+            CONDITIONS.put(createMixin, createLoadedSupplier);
+        }
     }
 
     @Override

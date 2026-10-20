@@ -10,6 +10,7 @@
     "create:experience_block",
 
     "create:experience_nugget",
+    "create:copper_nugget",
     "create:brass_nugget",
     "create:zinc_nugget"
   ]

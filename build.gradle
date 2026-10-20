@@ -14,6 +14,18 @@ repositories {
 	maven { url = "https://api.modrinth.com/maven" }
 	maven { url "https://maven.shedaniel.me/" }
 	maven { url "https://maven.architectury.dev/" }
+
+	// All of the following are for Create:
+	// Based on https://github.com/Fabricators-of-Create/create-fabric-addon-template/blob/1.20.1/build.gradle
+	maven { url = "https://mvn.devos.one/releases" } // Porting Lib releases
+	maven { url = "https://mvn.devos.one/snapshots" } // Create and several dependencies
+	maven { url = "https://maven.createmod.net/" } // Flywheel
+	maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
+	maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven" } // Forge Config API Port
+	maven { // Fabric ASM for Porting Lib
+		url = "https://jitpack.io/"
+		content { includeGroupAndSubgroups("com.github") }
+	}
 }
 loom {
 	accessWidenerPath = file("src/main/resources/archipelago.accesswidener")
@@ -46,6 +58,8 @@ dependencies {
 	modCompileOnly "dev.architectury:architectury-fabric:${architectury_version}"
 	modCompileOnly "me.shedaniel.cloth:cloth-config-fabric:${cloth_config_version}"
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
+
+	modCompileOnly "com.simibubi.create:create-fabric:${create_version}"
 }
 
 processResources {

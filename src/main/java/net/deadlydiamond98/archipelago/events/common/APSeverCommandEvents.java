@@ -1,5 +1,7 @@
 package net.deadlydiamond98.archipelago.events.common;
 
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.deadlydiamond98.archipelago.archipelago.Archipelago;
 import net.deadlydiamond98.archipelago.common.world.APPersistentState;
@@ -36,10 +38,36 @@ public class APSeverCommandEvents {
             if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
                 dispatcher.register(CommandManager.literal("apDebug")
                         .then(CommandManager.argument("check", StringArgumentType.string())
-                                .executes(context -> {
-                                    APPersistentState.get().triggerCheck(StringArgumentType.getString(context, "check"));
-                                    return 1;
-                                })
+                                .then(CommandManager.literal("trigger")
+                                        .executes(context -> {
+                                            APPersistentState.get().triggerCheck(
+                                                    StringArgumentType.getString(context, "check")
+                                            );
+                                            return 1;
+                                        })
+                                )
+                                .then(CommandManager.literal("progressive")
+                                        .then(CommandManager.argument("value", IntegerArgumentType.integer(0))
+                                                .executes(context -> {
+                                                    APPersistentState.get().setIntCheckValue(
+                                                            StringArgumentType.getString(context, "check"),
+                                                            IntegerArgumentType.getInteger(context, "value")
+                                                    );
+                                                    return 1;
+                                                })
+                                        )
+                                )
+                                .then(CommandManager.literal("boolean")
+                                        .then(CommandManager.argument("value", BoolArgumentType.bool())
+                                                .executes(context -> {
+                                                    APPersistentState.get().setBooleanCheckValue(
+                                                            StringArgumentType.getString(context, "check"),
+                                                            BoolArgumentType.getBool(context, "value")
+                                                    );
+                                                    return 1;
+                                                })
+                                        )
+                                )
                         )
                 );
             }
