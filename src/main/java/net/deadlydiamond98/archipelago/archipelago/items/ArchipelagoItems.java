@@ -112,6 +112,9 @@ public class ArchipelagoItems {
         ITEMS.put("Random Dye", new ItemTagAPItem(APTags.DYES, 3));
         ITEMS.put("Totem of Meteorology", new ItemstackAPItem(APItems.TOTEM_OF_METEOROLOGY, 1));
 
+        // Custom
+        ITEMS.put("Custom Filler", new CustomFillerAPItem());
+
         // Traps ///////////////////////////////////////////////////////////////////////////////////////////////////////
         ITEMS.put("Reverse Controls Trap", new StatusEffectTrap(APEffects.CONFUSION, 1200));
         ITEMS.put("Inverted Mouse Trap", new StatusEffectTrap(APEffects.DISORIENTATION, 1200));

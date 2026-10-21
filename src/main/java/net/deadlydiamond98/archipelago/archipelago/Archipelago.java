@@ -127,6 +127,7 @@ public class Archipelago extends Client {
 
         public int keep_inventory;
         public int itemsanity;
+        public String custom_single_filler;
 
         public Set<String> randomized_abilities;
         public Set<String> possible_randomized_abilities;
